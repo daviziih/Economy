@@ -1,0 +1,10 @@
+name: WireEconomy
+main: me.davi.economy.Main
+version: 1.0
+author: zDvizinho
+softdepend: [Vault]
+load: STARTUP
+commands:
+  money:
+    description: "Para ver o money atual"
+    aliases: [coin, coins]
