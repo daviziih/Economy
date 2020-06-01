@@ -27,9 +27,9 @@ public class cSubTop extends SubCommand {
 				String valor = WireEconomy.numberFormat(account.getBalance());
 				String accountname = account.getName();
 				if (i == 1) {
-					sender.sendMessage("§2§l" + i + "§7 " + accountname + ": §a" + valor);
+					sender.sendMessage("§2§l" + i + "º" + " §2[$]§7 " + accountname + ": §a" + valor);
 				} else {
-					sender.sendMessage("§2§l" + i + "§7 " + accountname + ": §a" + valor);
+					sender.sendMessage("§2§l" + i + "º" + "§7 " + accountname + ": §a" + valor);
 				}
 
 				i++;

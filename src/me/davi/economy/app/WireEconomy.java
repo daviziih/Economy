@@ -18,6 +18,7 @@ import me.davi.economy.manager.Messagens;
 import me.davi.economy.plugin.Economia;
 import me.davi.economy.plugin.objetos.RefreshMoneyTop;
 import me.davi.economy.plugin.vault.VaultEconomy;
+import me.davi.economy.util.Config;
 
 public class WireEconomy implements Listener {
 
@@ -26,6 +27,7 @@ public class WireEconomy implements Listener {
 	}
 
 	public static final String PLUGIN_NAME = "WireEconomy";
+	public static Config config;
 
 	public static String table;
 
@@ -37,6 +39,7 @@ public class WireEconomy implements Listener {
 	public void onEnable() {
 		database();
 		economia = new Economia();
+		config = new Config(instance, "config.yml");
 		refreshMoneyTop = new RefreshMoneyTop();
 		instance.getServer().getPluginManager().registerEvents(this, instance);
 		try {
