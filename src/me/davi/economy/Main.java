@@ -42,7 +42,6 @@ public class Main extends JavaPlugin {
 		database();
 		
 		economia = new Economy();
-		config = new Config(plugin, "config.yml");
 		refreshMoneyTop = new RefreshMoneyTop();
 		
 		try {
