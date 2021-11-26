@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import me.davi.economy.app.WireEconomy;
+import me.davi.economy.Main;
 import me.davi.economy.database.Database;
 import me.davi.economy.manager.Messagens;
 import me.davi.economy.plugin.objetos.Account;
@@ -114,10 +114,10 @@ public class Economia {
 	}
 
 	public void load() {
-		Database database = WireEconomy.database;
+		Database database = Main.database;
 		database.open();
 		try {
-			ResultSet result = database.query("select * from " + WireEconomy.table);
+			ResultSet result = database.query("select * from " + Main.table);
 			while (result.next()) {
 				try {
 					Account account = Account.valueOf(result);
@@ -138,13 +138,13 @@ public class Economia {
 	}
 
 	public List<Account> loadMoneyTop() {
-		Database database = WireEconomy.database;
+		Database database = Main.database;
 		this.moneytop = new ArrayList<>();
 		database.open();
 		try {
 
-			ResultSet result = database.query("select * from "
-					+ WireEconomy.table.concat(" where length(name) <= " + Messagens.ConfigmoneyTopSize
+			ResultSet result = database.query(
+					"select * from " + Main.table.concat(" where length(name) <= " + Messagens.ConfigmoneyTopSize
 							+ " order by cast(valor as decimal) desc limit " + Messagens.ConfigmoneyTop + ";"));
 
 			while (result.next()) {

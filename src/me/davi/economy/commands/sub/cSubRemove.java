@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import org.bukkit.command.CommandSender;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 
 public class cSubRemove extends SubCommand {
@@ -26,8 +26,8 @@ public class cSubRemove extends SubCommand {
 				return;
 			}
 
-			if (WireEconomy.economia.substractBalance(nome, valor)) {
-				sender.sendMessage(Messagens.money + "Você removeu §a" + WireEconomy.numberFormat(valor)
+			if (Main.economia.substractBalance(nome, valor)) {
+				sender.sendMessage(Messagens.money + "Você removeu §a" + Main.numberFormat(valor)
 						+ "§f da conta de §c" + nome);
 			} else {
 				sender.sendMessage(Messagens.jogadorInvalido);

@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import org.bukkit.command.CommandSender;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 
 public class cSubSet extends SubCommand {
@@ -26,9 +26,9 @@ public class cSubSet extends SubCommand {
 				return;
 			}
 
-			if (WireEconomy.economia.setBalance(nome, valor)) {
+			if (Main.economia.setBalance(nome, valor)) {
 				sender.sendMessage(
-						Messagens.money + "Você setou §a" + WireEconomy.numberFormat(valor) + "§f na conta de §b" + nome);
+						Messagens.money + "Você setou §a" + Main.numberFormat(valor) + "§f na conta de §b" + nome);
 			} else {
 				sender.sendMessage(Messagens.jogadorInvalido);
 			}

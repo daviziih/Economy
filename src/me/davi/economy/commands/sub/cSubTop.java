@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.bukkit.command.CommandSender;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 import me.davi.economy.plugin.objetos.Account;
 
@@ -17,14 +17,14 @@ public class cSubTop extends SubCommand {
 
 	@Override
 	public void execute(CommandSender sender, String[] args) {
-		List<Account> moneytop = WireEconomy.economia.getMoneyTop();
+		List<Account> moneytop = Main.economia.getMoneyTop();
 
 		if (!moneytop.isEmpty()) {
 			int i = 1;
 			sender.sendMessage("§2Top 10 Mais Ricos");
 			sender.sendMessage(" ");
 			for (Account account : moneytop) {
-				String valor = WireEconomy.numberFormat(account.getBalance());
+				String valor = Main.numberFormat(account.getBalance());
 				String accountname = account.getName();
 				if (i == 1) {
 					sender.sendMessage("§2§l" + i + "º" + " §2[$]§7 " + accountname + ": §a" + valor);
@@ -35,7 +35,6 @@ public class cSubTop extends SubCommand {
 				i++;
 			}
 			sender.sendMessage(" ");
-
 		} else {
 			sender.sendMessage("&2Top 10 Mais Ricos &7(Atualizado de 5 em 5 minutos)");
 			sender.sendMessage(" ");

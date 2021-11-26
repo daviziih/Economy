@@ -5,9 +5,9 @@ public class Messagens {
 	public static int ConfigmoneyTop = 10;
 	public static int ConfigmoneyTopSize = 16;
 	public static int ConfigmoneyTopAtualizar = 5;
-	
+
 	public static int moneyInicial = 300;
-	
+
 	public static String moneyPlural = "Coins";
 	public static String moneySingular = "Coin";
 

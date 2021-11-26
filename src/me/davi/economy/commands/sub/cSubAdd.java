@@ -4,14 +4,15 @@ import java.math.BigDecimal;
 
 import org.bukkit.command.CommandSender;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 
 public class cSubAdd extends SubCommand {
 
 	public cSubAdd(String command) {
-		super("add", Messagens.money + "Use correto: §b/" + command + " add (jogador) (valor)", "rankup.cmd.add", "give");
+		super("add", Messagens.money + "Use correto: §b/" + command + " add (jogador) (valor)", "rankup.cmd.add",
+				"give");
 	}
 
 	@Override
@@ -27,9 +28,9 @@ public class cSubAdd extends SubCommand {
 				return;
 			}
 
-			if (WireEconomy.economia.addBalance(nome, valor)) {
+			if (Main.economia.addBalance(nome, valor)) {
 				sender.sendMessage(Messagens.money + "Foi adicionado na conta de §b" + nome + "§f o valor §a"
-						+ WireEconomy.numberFormat(valor));
+						+ Main.numberFormat(valor));
 			} else {
 				sender.sendMessage(Messagens.money + "Jogador não encontrado");
 			}

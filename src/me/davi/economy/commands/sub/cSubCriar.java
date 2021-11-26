@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import org.bukkit.command.CommandSender;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 
 public class cSubCriar extends SubCommand {
@@ -27,7 +27,7 @@ public class cSubCriar extends SubCommand {
 				return;
 			}
 
-			if (WireEconomy.economia.createAccount(nome, valor)) {
+			if (Main.economia.createAccount(nome, valor)) {
 				sender.sendMessage(Messagens.money + "Conta §b" + nome + "§f criada com §a§lSUCESSO§f!");
 
 			} else {

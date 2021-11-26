@@ -6,15 +6,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 
 public class cSubPay extends SubCommand {
 
 	public cSubPay(String command) {
-		super("pay", Messagens.money + "Use correto: §b/" + command + " pay (jogador) (valor)", "cmd.tag.membro", "pagar",
-				"enviar");
+		super("pay", Messagens.money + "Use correto: §b/" + command + " pay (jogador) (valor)", "cmd.tag.membro",
+				"pagar", "enviar");
 	}
 
 	@Override
@@ -37,19 +37,19 @@ public class cSubPay extends SubCommand {
 				return;
 			}
 
-			if (WireEconomy.economia.hasBalance(sender.getName(), valor)) {
+			if (Main.economia.hasBalance(sender.getName(), valor)) {
 
-				if (!WireEconomy.economia.isToggle(nome)) {
-					if (WireEconomy.economia.addBalance(nome, valor)) {
-						WireEconomy.economia.substractBalance(sender.getName(), valor);
-						sender.sendMessage(Messagens.money + "Você enviou §a" + WireEconomy.numberFormat(valor)
+				if (!Main.economia.isToggle(nome)) {
+					if (Main.economia.addBalance(nome, valor)) {
+						Main.economia.substractBalance(sender.getName(), valor);
+						sender.sendMessage(Messagens.money + "Você enviou §a" + Main.numberFormat(valor)
 								+ "§f para o jogador §b" + nome);
 
 						Player target = Bukkit.getPlayer(nome);
 						if (target != null) {
 							if (sender != target) {
 								target.sendMessage(Messagens.money + "O jogador §b" + sender.getName()
-										+ "§f acabou de enviar §a" + WireEconomy.numberFormat(valor));
+										+ "§f acabou de enviar §a" + Main.numberFormat(valor));
 							}
 						}
 

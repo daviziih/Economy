@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 
-import me.davi.economy.app.WireEconomy;
+import me.davi.economy.Main;
 import me.davi.economy.database.Database;
 
 public class Account {
@@ -48,7 +48,7 @@ public class Account {
 
 	public void saveAsync(long delay) {
 		if (this.asyncSaveTask == null) {
-			this.asyncSaveTask = Bukkit.getScheduler().runTaskLater(WireEconomy.instance, new Runnable() {
+			this.asyncSaveTask = Bukkit.getScheduler().runTaskLater(Main.instance, new Runnable() {
 				@Override
 				public void run() {
 					try {
@@ -63,8 +63,8 @@ public class Account {
 	}
 
 	public void save() {
-		Database database = WireEconomy.database;
-		String table = WireEconomy.table;
+		Database database = Main.database;
+		String table = Main.table;
 		database.open();
 		try {
 			ResultSet result = database.query("select toggle from " + table + " where name='" + this.name + "'");
@@ -82,8 +82,8 @@ public class Account {
 	}
 
 	public void delete() {
-		Database database = WireEconomy.database;
-		String table = WireEconomy.table;
+		Database database = Main.database;
+		String table = Main.table;
 		database.open();
 		try {
 			ResultSet result = database.query("select toggle from " + table + " where name='" + this.name + "'");

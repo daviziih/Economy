@@ -2,8 +2,8 @@ package me.davi.economy.commands.sub;
 
 import org.bukkit.command.CommandSender;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 
 public class cSubDeletar extends SubCommand {
@@ -17,7 +17,7 @@ public class cSubDeletar extends SubCommand {
 	public void execute(CommandSender sender, String[] args) {
 		if (args.length >= 2) {
 			String nome = args[1];
-			if (WireEconomy.economia.deleteAccount(nome)) {
+			if (Main.economia.deleteAccount(nome)) {
 				sender.sendMessage(Messagens.money + "Conta §b" + nome + "§f deletada com §a§lSUCESSO§f!");
 			} else {
 				sender.sendMessage(Messagens.money + "Não existe uma conta com o nome §c" + nome);

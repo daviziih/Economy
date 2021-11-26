@@ -1,15 +1,15 @@
-package me.davi.economy;
+package me.davi.economy.manager;
 
 import java.util.List;
 
-import me.davi.economy.app.WireEconomy;
+import me.davi.economy.Main;
 import me.davi.economy.plugin.Economia;
 import me.davi.economy.plugin.objetos.Account;
 
 public class API {
 
 	public API() {
-		economia = WireEconomy.economia;
+		economia = Main.economia;
 	}
 
 	private Economia economia;

@@ -2,8 +2,8 @@ package me.davi.economy.commands.sub;
 
 import org.bukkit.command.CommandSender;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.manager.Messagens;
 
 public class cSubToggle extends SubCommand {
@@ -14,7 +14,7 @@ public class cSubToggle extends SubCommand {
 
 	@Override
 	public void execute(CommandSender sender, String[] args) {
-		String toggle = WireEconomy.economia.toggle(sender.getName()) ? "OFF" : "ON";
+		String toggle = Main.economia.toggle(sender.getName()) ? "OFF" : "ON";
 		sender.sendMessage(Messagens.money + "Recebimento de money " + toggle);
 
 	}

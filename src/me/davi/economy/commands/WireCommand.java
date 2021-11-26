@@ -9,8 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import me.davi.economy.Main;
 import me.davi.economy.abstracts.SubCommand;
-import me.davi.economy.app.WireEconomy;
 import me.davi.economy.commands.sub.SubCmdHelp;
 import me.davi.economy.commands.sub.cSubAdd;
 import me.davi.economy.commands.sub.cSubCriar;
@@ -42,8 +42,8 @@ public class WireCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (sender instanceof Player) {
-			if (!WireEconomy.economia.existsAccount(sender.getName()))
-				WireEconomy.economia.createAccount(sender.getName(), new BigDecimal(Messagens.moneyInicial));
+			if (!Main.economia.existsAccount(sender.getName()))
+				Main.economia.createAccount(sender.getName(), new BigDecimal(Messagens.moneyInicial));
 
 		}
 		if (args.length >= 1) {
@@ -56,31 +56,31 @@ public class WireCommand implements CommandExecutor {
 							subCommand.execute(sender, args);
 						} else {
 							sender.sendMessage(
-									"§c§lPERMISSAO §fVocê não tem §c§lPERMISSAO §fpara executar esse comando!");
+									"§c§lPERMISSAO §fVocê não tem §c§lPERMISSÃO §fpara executar esse comando!");
 						}
 						return false;
 					}
 				}
 			}
 
-			if (WireEconomy.economia.existsAccount(args[0])) {
+			if (Main.economia.existsAccount(args[0])) {
 				if (sender.getName().equals(args[0])) {
 					if (sender instanceof Player) {
 						sender.sendMessage(
-								Messagens.money + "Money: §a" + WireEconomy.economia.getBalance(sender.getName()));
+								Messagens.money + "Money: §a" + Main.economia.getBalance(sender.getName()));
 					} else {
 						sender.sendMessage("§a/" + command.getName() + " ajuda §8- §7ver os comandos do plugin.");
 					}
 				} else {
 					sender.sendMessage(Messagens.money + "Money de §b" + args[0] + "§f no valor §a"
-							+ WireEconomy.economia.getBalance(args[0]));
+							+ Main.economia.getBalance(args[0]));
 				}
 			} else {
 				sender.sendMessage(Messagens.jogadorInvalido);
 			}
 		} else {
 			if (sender instanceof Player) {
-				sender.sendMessage(Messagens.money + "Money: §a" + WireEconomy.economia.getBalance(sender.getName()));
+				sender.sendMessage(Messagens.money + "Money: §a" + Main.economia.getBalance(sender.getName()));
 			} else {
 				sender.sendMessage("§a/" + command.getName() + " ajuda §8- §7ver os comandos do plugin.");
 			}

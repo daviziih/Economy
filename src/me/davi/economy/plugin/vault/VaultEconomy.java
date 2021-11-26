@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.ServicePriority;
 
-import me.davi.economy.app.WireEconomy;
+import me.davi.economy.Main;
 import me.davi.economy.manager.Messagens;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -15,13 +15,12 @@ import net.milkbowl.vault.economy.EconomyResponse;
 public class VaultEconomy implements Economy {
 
 	public VaultEconomy() {
-		Bukkit.getServer().getServicesManager().register(Economy.class, this, WireEconomy.instance,
-				ServicePriority.Highest);
+		Bukkit.getServer().getServicesManager().register(Economy.class, this, Main.instance, ServicePriority.Highest);
 	}
 
 	@Override
 	public boolean createPlayerAccount(String name) {
-		return WireEconomy.economia.createAccount(name, new BigDecimal(Messagens.moneyInicial));
+		return Main.economia.createAccount(name, new BigDecimal(Messagens.moneyInicial));
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class VaultEconomy implements Economy {
 
 	@Override
 	public EconomyResponse depositPlayer(String name, double valor) {
-		if (WireEconomy.economia.addBalance(name, new BigDecimal(valor))) {
+		if (Main.economia.addBalance(name, new BigDecimal(valor))) {
 			return new EconomyResponse(valor, getBalance(name), EconomyResponse.ResponseType.SUCCESS, "");
 		} else {
 			return new EconomyResponse(valor, getBalance(name), EconomyResponse.ResponseType.FAILURE, "");
@@ -75,7 +74,7 @@ public class VaultEconomy implements Economy {
 
 	@Override
 	public String format(double valor) {
-		return WireEconomy.numberFormat(new BigDecimal(valor));
+		return Main.numberFormat(new BigDecimal(valor));
 	}
 
 	@Override
@@ -85,7 +84,7 @@ public class VaultEconomy implements Economy {
 
 	@Override
 	public double getBalance(String name) {
-		return WireEconomy.economia.getBalance(name).doubleValue();
+		return Main.economia.getBalance(name).doubleValue();
 	}
 
 	@Override
@@ -105,12 +104,12 @@ public class VaultEconomy implements Economy {
 
 	@Override
 	public String getName() {
-		return WireEconomy.PLUGIN_NAME;
+		return Main.PLUGIN_NAME;
 	}
 
 	@Override
 	public boolean has(String name, double valor) {
-		return WireEconomy.economia.hasBalance(name, new BigDecimal(valor));
+		return Main.economia.hasBalance(name, new BigDecimal(valor));
 	}
 
 	@Override
@@ -130,7 +129,7 @@ public class VaultEconomy implements Economy {
 
 	@Override
 	public boolean hasAccount(String name) {
-		return WireEconomy.economia.existsAccount(name);
+		return Main.economia.existsAccount(name);
 	}
 
 	@Override
@@ -155,12 +154,12 @@ public class VaultEconomy implements Economy {
 
 	@Override
 	public boolean isEnabled() {
-		return WireEconomy.instance.isEnabled();
+		return Main.instance.isEnabled();
 	}
 
 	@Override
 	public EconomyResponse withdrawPlayer(String name, double valor) {
-		if (WireEconomy.economia.substractBalance(name, new BigDecimal(valor))) {
+		if (Main.economia.substractBalance(name, new BigDecimal(valor))) {
 			return new EconomyResponse(valor, getBalance(name), EconomyResponse.ResponseType.SUCCESS, "");
 		} else {
 			return new EconomyResponse(valor, getBalance(name), EconomyResponse.ResponseType.FAILURE, "");
