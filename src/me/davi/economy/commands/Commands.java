@@ -66,21 +66,22 @@ public class Commands implements CommandExecutor {
 			if (Main.economia.existsAccount(args[0])) {
 				if (sender.getName().equals(args[0])) {
 					if (sender instanceof Player) {
-						sender.sendMessage(
-								Messagens.money + "Money: §a" + Main.economia.getBalance(sender.getName()));
+						sender.sendMessage(Messagens.money + "Money: §a"
+								+ Main.numberFormat(Main.economia.getBalance(sender.getName())));
 					} else {
 						sender.sendMessage("§a/" + command.getName() + " ajuda §8- §7ver os comandos do plugin.");
 					}
 				} else {
-					sender.sendMessage(Messagens.money + "Money de §b" + args[0] + "§f no valor §a"
-							+ Main.economia.getBalance(args[0]));
+					sender.sendMessage(Messagens.money + "O jogador §b" + args[0] + "§f possui §a"
+							+ Main.numberFormat(Main.economia.getBalance(args[0])));
 				}
 			} else {
 				sender.sendMessage(Messagens.jogadorInvalido);
 			}
 		} else {
 			if (sender instanceof Player) {
-				sender.sendMessage(Messagens.money + "Money: §a" + Main.economia.getBalance(sender.getName()));
+				sender.sendMessage(
+						Messagens.money + "Money: §a" + Main.numberFormat(Main.economia.getBalance(sender.getName())));
 			} else {
 				sender.sendMessage("§a/" + command.getName() + " ajuda §8- §7ver os comandos do plugin.");
 			}
