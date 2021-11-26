@@ -12,7 +12,7 @@ import me.davi.economy.database.Database;
 import me.davi.economy.manager.Messagens;
 import me.davi.economy.plugin.objetos.Account;
 
-public class Economia {
+public class Economy {
 
 	public static void main(String[] args) {
 		BigDecimal saldo = new BigDecimal("18");
@@ -25,7 +25,7 @@ public class Economia {
 	private Map<String, Account> accounts;
 	private List<Account> moneytop;
 
-	public Economia() {
+	public Economy() {
 		this.accounts = new HashMap<>();
 		this.load();
 	}

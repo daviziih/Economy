@@ -48,7 +48,7 @@ public class Account {
 
 	public void saveAsync(long delay) {
 		if (this.asyncSaveTask == null) {
-			this.asyncSaveTask = Bukkit.getScheduler().runTaskLater(Main.instance, new Runnable() {
+			this.asyncSaveTask = Bukkit.getScheduler().runTaskLater(Main.plugin, new Runnable() {
 				@Override
 				public void run() {
 					try {

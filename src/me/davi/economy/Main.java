@@ -9,11 +9,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.davi.economy.commands.WireCommand;
+import me.davi.economy.commands.Commands;
 import me.davi.economy.database.Database;
 import me.davi.economy.database.SQLite;
 import me.davi.economy.manager.Messagens;
-import me.davi.economy.plugin.Economia;
+import me.davi.economy.plugin.Economy;
 import me.davi.economy.plugin.objetos.RefreshMoneyTop;
 import me.davi.economy.plugin.vault.VaultEconomy;
 import me.davi.economy.util.Config;
@@ -27,9 +27,8 @@ public class Main extends JavaPlugin {
 
 	public static String table;
 
-	public static JavaPlugin instance;
 	public static Database database;
-	public static Economia economia;
+	public static Economy economia;
 	public static RefreshMoneyTop refreshMoneyTop;
 
 	@Override
@@ -37,14 +36,15 @@ public class Main extends JavaPlugin {
 		plugin = this;
 
 		if (Bukkit.getPluginManager().isPluginEnabled(this)) {
-			getCommand("money").setExecutor(new WireCommand("money"));
+			getCommand("money").setExecutor(new Commands("money"));
 		}
 
 		database();
 		
-		economia = new Economia();
-		config = new Config(instance, "config.yml");
+		economia = new Economy();
+		config = new Config(plugin, "config.yml");
 		refreshMoneyTop = new RefreshMoneyTop();
+		
 		try {
 			Plugin vault = Bukkit.getPluginManager().getPlugin("Vault");
 			if (vault != null) {
@@ -69,13 +69,13 @@ public class Main extends JavaPlugin {
 	public void database() {
 		try {
 			table = PLUGIN_NAME.toLowerCase().replace("-", "");
-			database = new SQLite(instance);
+			database = new SQLite(plugin);
 
 			if (database.open()) {
 				database.close();
 			} else {
 				table = PLUGIN_NAME.toLowerCase().replace("-", "");
-				database = new SQLite(instance);
+				database = new SQLite(plugin);
 			}
 			database.open();
 

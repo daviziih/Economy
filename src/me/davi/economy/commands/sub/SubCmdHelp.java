@@ -20,45 +20,37 @@ public class SubCmdHelp extends SubCommand {
 		sender.sendMessage(" ");
 
 		if (sender instanceof Player) {
-			sender.sendMessage(Messagens.money + "§f/" + command + " §8- §7ver seu saldo atual.");
+			
+			sender.sendMessage(" ");
+			sender.sendMessage("§b§lMONEY HELP");
+			sender.sendMessage(" ");
+			
+			sender.sendMessage("§7/" + command + " §8- §fver seu saldo atual.");
+			
 			if (sender.hasPermission("cmd.tag.membro"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " pay (jogador) (valor) §8- §7envia money a um jogador.");
+				sender.sendMessage("§7/" + command + " pay (jogador) (valor) §8- §fenvia money a um jogador.");
 
 			if (sender.hasPermission("rankup.cmd.set"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " set (jogador) (valor) §8- §7seta o money de um jogador.");
+				sender.sendMessage("§7/" + command + " set (jogador) (valor) §8- §fseta o money de um jogador.");
 
-			if (sender.hasPermission("solaryeconomy.commands.add"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " add [jogador] [valor] §8- §7adicionar money a um jogador.");
+			if (sender.hasPermission("rankup.commands.add"))
+				sender.sendMessage("§7/" + command + " add [jogador] [valor] §8- §fadicionar money a um jogador.");
 
-			if (sender.hasPermission("solaryeconomy.commands.remove"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " remove [jogador] [valor] §8- §7remove money de um jogador.");
+			if (sender.hasPermission("rankup.commands.remove"))
+				sender.sendMessage("§7/" + command + " remove [jogador] [valor] §8- §fremove money de um jogador.");
 
-			if (sender.hasPermission("solaryeconomy.commands.top"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " top §8- §7ver o money top do servidor.");
+			if (sender.hasPermission("rankup.commands.top"))
+				sender.sendMessage("§7/" + command + " top §8- §fver o money top do servidor.");
 
-			sender.sendMessage("§a/" + command + " ajuda §8- §7ver os comandos do plugin.");
+			if (sender.hasPermission("rankup.commands.toggle"))
+				sender.sendMessage("§7/" + command + " toggle §8- §fhabilitar/desabilitar o recebimento de coins.");
 
-			if (sender.hasPermission("solaryeconomy.commands.toggle"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " toggle §8- §7habilitar/desabilitar o recebimento de coins.");
-
-			if (sender.hasPermission("solaryeconomy.commands.criar"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " criar (nome) (valor) §8- §7criar uma conta.");
+			if (sender.hasPermission("rankup.commands.criar"))
+				sender.sendMessage("§7/" + command + " criar (nome) (valor) §8- §fcriar uma conta.");
 
 			if (sender.hasPermission("rankup.cmd.deletar"))
-				sender.sendMessage(Messagens.money + "§f/" + command + " deletar (nome) §8- §7deletar uma conta.");
+				sender.sendMessage("§7/" + command + " deletar (nome) §8- §fdeletar uma conta.");
 
-		} else {
-			sender.sendMessage("§a/" + command + " [jogador]§8- §7ver o saldo atual de um jogador.");
-			sender.sendMessage("§a/" + command + " set [jogador] [valor] §8- §7seta o money de um jogador.");
-			sender.sendMessage("§a/" + command + " add [jogador] [valor] §8- §7adicionar money a um jogador.");
-			sender.sendMessage("§a/" + command + " remove [jogador] [valor] §8- §7remove money de um jogador.");
-			sender.sendMessage("§a/" + command + " top §8- §7ver o money top do servidor.");
-			sender.sendMessage("§a/" + command + " ajuda §8- §7ver os comandos do plugin.");
-			sender.sendMessage("§a/" + command + " create [jogador] [valor] §8- §7criar uma conta.");
-			sender.sendMessage("§a/" + command + " delete [jogador] [valor] §8- §7deletar uma conta.");
-			sender.sendMessage("§a/" + command + " converter [plugin] §8- §7converter a economia de um plugin.");
-			sender.sendMessage("§a/" + command + " reload §8- §7recarregar os arquivos de configs.");
-			sender.sendMessage("§a/" + command + " magnata §8- §7ver o magnata atual do servidor.");
 		}
 
 		sender.sendMessage(" ");

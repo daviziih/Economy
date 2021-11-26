@@ -15,7 +15,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
 public class VaultEconomy implements Economy {
 
 	public VaultEconomy() {
-		Bukkit.getServer().getServicesManager().register(Economy.class, this, Main.instance, ServicePriority.Highest);
+		Bukkit.getServer().getServicesManager().register(Economy.class, this, Main.plugin, ServicePriority.Highest);
 	}
 
 	@Override
@@ -154,7 +154,7 @@ public class VaultEconomy implements Economy {
 
 	@Override
 	public boolean isEnabled() {
-		return Main.instance.isEnabled();
+		return Main.plugin.isEnabled();
 	}
 
 	@Override

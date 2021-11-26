@@ -23,7 +23,7 @@ public class RefreshMoneyTop implements Runnable {
 		if (task != -1) {
 			Bukkit.getScheduler().cancelTask(task);
 		}
-		task = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, this, 10,
+		task = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.plugin, this, 10,
 				20 * Messagens.ConfigmoneyTopAtualizar);
 	}
 }

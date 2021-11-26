@@ -22,11 +22,11 @@ import me.davi.economy.commands.sub.cSubToggle;
 import me.davi.economy.commands.sub.cSubTop;
 import me.davi.economy.manager.Messagens;
 
-public class WireCommand implements CommandExecutor {
+public class Commands implements CommandExecutor {
 
 	private List<SubCommand> subcommands;
 
-	public WireCommand(String command) {
+	public Commands(String command) {
 		subcommands = new ArrayList<SubCommand>();
 		subcommands.add(new SubCmdHelp(command));
 		subcommands.add(new cSubTop(command));
