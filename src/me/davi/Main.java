@@ -34,6 +34,8 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		plugin = this;
+		
+		saveDefaultConfig();
 
 		if (Bukkit.getPluginManager().isPluginEnabled(this)) {
 			getCommand("money").setExecutor(new Commands("money"));
